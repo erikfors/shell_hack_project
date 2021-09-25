@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'app/views/login/login.dart';
+import 'app/views/portafolio/portafolio.dart';
 import 'app/views/splashscreen/splashscreen.dart';
 
 void main() {
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/splash': (context) => const SplashScreenView(),
         '/login': (context) => const LoginView(),
+        '/portafolio': (context) => const PortafolioView(),
       },
     );
   }
