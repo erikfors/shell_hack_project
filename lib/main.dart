@@ -23,13 +23,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/splash': (context) => const SplashScreenView(),
         '/login': (context) => const LoginView(),
-<<<<<<< HEAD
         '/home' : (context) => const HomeScreen(),
-        '/portafolio': (context) => const PortafolioView(),
-
-=======
-        '/portafolio': (context) => const PortafolioView(),
->>>>>>> a2956077974c0cdb0db32e374dae5c1e8a405909
       },
     );
   }

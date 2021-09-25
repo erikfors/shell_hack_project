@@ -7,7 +7,6 @@ class SplashScreenView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Color(0xFF131619),
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
