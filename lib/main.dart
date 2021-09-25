@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shellhack_project/app/views/home_sceen.dart';
 
 import 'app/views/login/login.dart';
 import 'app/views/splashscreen/splashscreen.dart';
@@ -15,11 +16,13 @@ class MyApp extends StatelessWidget {
       title: 'Hackathon',
       theme: ThemeData(
         brightness: Brightness.dark,
+        primaryColor: Color(0xFF41BEA5),
         primarySwatch: Colors.blue,
       ),
       routes: {
         '/splash': (context) => const SplashScreenView(),
         '/login': (context) => const LoginView(),
+        '/home' : (context) => const HomeScreen(),
       },
     );
   }

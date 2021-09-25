@@ -79,7 +79,7 @@ class LoginView extends StatelessWidget {
                         width: MediaQuery.of(context).size.width / 2,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.pushNamed(context, '/login');
+                            Navigator.popAndPushNamed(context, '/home');
                           },
                           child: Text('Login'),
                         ),
