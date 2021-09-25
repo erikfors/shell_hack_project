@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:shellhack_project/app/views/home_sceen.dart';
 
 import 'app/views/login/login.dart';
+import 'app/views/portafolio/portafolio.dart';
 import 'app/views/splashscreen/splashscreen.dart';
 
 void main() {
@@ -23,6 +24,8 @@ class MyApp extends StatelessWidget {
         '/splash': (context) => const SplashScreenView(),
         '/login': (context) => const LoginView(),
         '/home' : (context) => const HomeScreen(),
+        '/portafolio': (context) => const PortafolioView(),
+
       },
     );
   }

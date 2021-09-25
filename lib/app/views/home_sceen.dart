@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shellhack_project/app/views/portafolio/portafolio.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -11,10 +12,7 @@ class _HomeScreenState extends State<HomeScreen> {
   var _index = 0;
 
   final _tabs = [
-    Center(
-      child: Text(
-        "Portafolio",
-      ),
+    PortafolioView(
     ),
     Center(
       child: Text(
