@@ -16,7 +16,7 @@ class CoinRoutesProvider {
 
   final _channel = WebSocketChannel.connect(
     Uri.parse(
-        'wss://staging.coinroutes.com/api/streaming/cbbo/?token=6c634e1eacecc4801b000249287fbf923d5c8824'),
+        'wss://staging.coinroutes.com/api/streaming/real_price/?token=6c634e1eacecc4801b000249287fbf923d5c8824'),
   );
 
   Future<List<CurrencyPair>> getCurrencyPairs() async {
@@ -41,7 +41,7 @@ class CoinRoutesProvider {
       ),
       data: {
         "currency_pair": pair,
-        "exchanges": ["gdax", "gemini", "bitstamp"],
+        "exchanges": ["gdax", "gemini", "bitstamp","kraken"],
         "side": "bids",
         "quantity": quantity,
         "use_fees": true,
