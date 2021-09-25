@@ -50,6 +50,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.1"
+  csv:
+    dependency: "direct main"
+    description:
+      name: csv
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.0.0"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -64,6 +71,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "4.0.0"
+  equatable:
+    dependency: transitive
+    description:
+      name: equatable
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.3"
   fake_async:
     dependency: transitive
     description:
@@ -71,16 +85,39 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.2.0"
+  fl_chart:
+    dependency: "direct main"
+    description:
+      name: fl_chart
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.40.0"
   flutter:
     dependency: "direct main"
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_candlesticks:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: HEAD
+      resolved-ref: c4af17340db1a60cc4db13808cc14dff5e2e0a8a
+      url: "https://github.com/salvadordeveloper/flutter-candlesticks"
+    source: git
+    version: "0.1.4"
   flutter_test:
     dependency: "direct dev"
     description: flutter
     source: sdk
     version: "0.0.0"
+  get:
+    dependency: "direct main"
+    description:
+      name: get
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "4.3.8"
   http_parser:
     dependency: transitive
     description:
@@ -102,13 +139,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.7.0"
-  nested:
-    dependency: transitive
-    description:
-      name: nested
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "1.0.0"
   path:
     dependency: transitive
     description:
@@ -116,13 +146,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.8.0"
-  provider:
-    dependency: "direct main"
+  pedantic:
+    dependency: transitive
     description:
-      name: provider
+      name: pedantic
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "6.0.1"
+    version: "1.11.1"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -193,4 +223,3 @@ packages:
     version: "2.1.0"
 sdks:
   dart: ">=2.12.0 <3.0.0"
-  flutter: ">=1.16.0"
