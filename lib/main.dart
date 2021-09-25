@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shellhack_project/app/views/home_sceen.dart';
-
 import 'app/views/login/login.dart';
-import 'app/views/portafolio/portafolio.dart';
 import 'app/views/splashscreen/splashscreen.dart';
 
 void main() {
