@@ -36,7 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       backgroundColor: Color(0xFF1A1F24),
       appBar: AppBar(
-        title: Text("OkCoinRoute"),
+        title: Text("Coinscape"),
         backgroundColor: Theme.of(context).primaryColor,
       ),
       body: _tabs[_index],
