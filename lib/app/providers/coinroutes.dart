@@ -32,7 +32,7 @@ class CoinRoutesProvider {
   }
 
   Future<CostCalculator> getCostCalculator(
-      {required String pair, int quantity = 1}) async {
+      {required String pair, int quantity = 1, required List exchanges}) async {
     Dio dio = new Dio();
     Response response = await dio.post(
       _baseUrl + '/cost_calculator/',
@@ -41,8 +41,8 @@ class CoinRoutesProvider {
       ),
       data: {
         "currency_pair": pair,
-        "exchanges": ["gdax", "gemini", "bitstamp", "kraken"],
-        "side": "bids",
+        "exchanges": exchanges,
+        "side": "asks",
         "quantity": quantity,
         "use_fees": true,
         "use_funding_currency": false

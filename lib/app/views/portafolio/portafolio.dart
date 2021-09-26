@@ -49,11 +49,11 @@ class PortafolioView extends StatelessWidget {
 
                                 var data = snapshot.data;
 
-                                if (data == null) {
-                                  return Text("G");
+                                if (snapshot.hasError) {
+                                  return Text(controller.pairs[index].slug);
                                 }
 
-                                return data;
+                                return data!;
                               },
                             ),
                           ),
@@ -63,10 +63,14 @@ class PortafolioView extends StatelessWidget {
                           ),
                           trailing: FutureBuilder(
                             future: controller.getCost(
-                                pair: controller.pairs[index].slug,
-                                quantity: 1),
+                              pair: controller.pairs[index].slug,
+                              quantity: 1,
+                              exchanges: controller.pairs[index].exchanges
+                                  .map((e) => e.name)
+                                  .toList(),
+                            ),
                             builder: (BuildContext context,
-                                AsyncSnapshot<CostCalculator> snapshot) {
+                                AsyncSnapshot<CostCalculator?> snapshot) {
                               if (snapshot.connectionState ==
                                   ConnectionState.waiting) {
                                 return Text("Loading...");

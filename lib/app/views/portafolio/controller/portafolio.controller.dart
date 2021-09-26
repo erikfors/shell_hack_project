@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:get/get.dart';
 import 'package:shellhack_project/app/models/cost_calculator.dart';
 import 'package:shellhack_project/app/models/currency_pairs.dart';
@@ -12,9 +13,9 @@ class PortafolioController extends GetxController {
     super.onReady();
   }
 
-  Future<CostCalculator> getCost(
-      {required String pair, int quantity = 1}) async {
+  Future<CostCalculator?> getCost(
+      {required String pair, int quantity = 1, required List exchanges}) async {
     return await coinRoutesProvider.getCostCalculator(
-        pair: pair, quantity: quantity);
+        pair: pair, quantity: quantity, exchanges: exchanges);
   }
 }
