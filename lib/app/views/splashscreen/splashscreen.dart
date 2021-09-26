@@ -12,12 +12,12 @@ class SplashScreenView extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              Text(
-                'OkCoinRoutes',
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
+              Container(
+                child: Image.asset(
+                  "assets/logo.PNG",
                 ),
+                height: 400,
+                width: 300,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 25.0),
