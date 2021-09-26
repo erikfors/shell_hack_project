@@ -1,7 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:shellhack_project/app/views/coin%20detail/coin_detail.dart';
 import 'package:shellhack_project/app/views/home_sceen.dart';
 import 'package:shellhack_project/app/views/login/register.dart';
 import 'package:shellhack_project/app/views/portafolio/portafolio.dart';

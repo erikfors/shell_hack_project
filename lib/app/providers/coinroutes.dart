@@ -1,11 +1,9 @@
 import 'dart:convert';
 
-import 'package:csv/csv.dart';
+
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:shellhack_project/app/models/cost_calculator.dart';
 import 'package:shellhack_project/app/models/currency_pairs.dart';
-import 'package:shellhack_project/app/models/real_price.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 class CoinRoutesProvider {
