@@ -14,18 +14,16 @@ class PortafolioView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+      appBar: AppBar(title: Text("Search a Coin"),),
+        body: Container(
       width: double.infinity,
       color: Color(0xFF1A1F24),
       padding: EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "My Portafolio",
-            textAlign: TextAlign.start,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
+        
           Obx(
             () => controller.pairs.isEmpty
                 ? Center(
@@ -128,6 +126,6 @@ class PortafolioView extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ));
   }
 }
