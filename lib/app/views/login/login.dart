@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get/get.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -14,7 +15,7 @@ class LoginView extends StatelessWidget {
 
       //create user var firestore = FirebaseFirestore.instance;
 
-      Navigator.of(ctx).popAndPushNamed("/home");
+      Get.offAllNamed("/home");
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');

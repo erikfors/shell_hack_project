@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SplashScreenView extends StatelessWidget {
   const SplashScreenView({Key? key}) : super(key: key);
@@ -32,7 +33,7 @@ class SplashScreenView extends StatelessWidget {
                           primary: Theme.of(context).primaryColor,
                         ),
                         onPressed: () {
-                          Navigator.popAndPushNamed(context, '/register');
+                          Get.toNamed('/register');
                         },
                         child: Text(
                           'Register',
@@ -47,7 +48,7 @@ class SplashScreenView extends StatelessWidget {
                       width: MediaQuery.of(context).size.width / 2,
                       child: ElevatedButton(
                         onPressed: () {
-                          Navigator.popAndPushNamed(context, '/login');
+                          Get.offAllNamed('/login');
                         },
                         style: ElevatedButton.styleFrom(
                           primary: Colors.white,
