@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CryptoIcon {
-  static Future<Image> getIcon({required String iconUrl}) async {
+  static Future<Widget> getIcon({required String name}) async {
     return Image.network(
-        'https://cryptoicons.org/api/icon/${iconUrl.toLowerCase()}/200');
+        'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/${name.toLowerCase()}.png');
   }
 }
