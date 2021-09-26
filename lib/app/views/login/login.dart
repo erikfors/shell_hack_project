@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
 
+  void logIn(String emai, String password){
+
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    //FirebaseAuth auth = FirebaseAuth.instance;
+
     return Scaffold(
       body: Container(
         color: Color(0xFF131619),
@@ -80,7 +88,7 @@ class LoginView extends StatelessWidget {
                         width: MediaQuery.of(context).size.width / 2,
                         child: ElevatedButton(
                           onPressed: () {
-                            Get.offAllNamed('/home');
+                            Navigator.popAndPushNamed(context, '/home');
                           },
                           child: Text('Login'),
                         ),

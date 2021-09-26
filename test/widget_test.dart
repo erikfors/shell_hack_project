@@ -10,5 +10,5 @@ import 'package:shellhack_project/app/providers/coinroutes.dart';
 void main() async {
   CoinRoutesProvider provider = CoinRoutesProvider();
   print('hellop');
-  final chart = await provider.coinChart(pair: 'BTC-USD');
+  //final chart = await provider.coinChart(pair: 'BTC-USD');
 }

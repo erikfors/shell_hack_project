@@ -28,7 +28,9 @@ class PortafolioView extends StatelessWidget {
           ),
           Obx(
             () => controller.pairs.isEmpty
-                ? CircularProgressIndicator()
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
                 : Expanded(
                     child: ListView.builder(
                       itemCount: 50,
