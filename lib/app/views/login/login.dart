@@ -7,13 +7,14 @@ class LoginView extends StatelessWidget {
 
   void logIn(String emai, String password, BuildContext ctx) async {
     try {
-      await FirebaseAuth.instance
+      var userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(
               email: "barry.allen@example.com",
               password: "SuperSecretPassword!");
 
-              Navigator.of(ctx).popAndPushNamed("/home");
+      //create user var firestore = FirebaseFirestore.instance;
 
+      Navigator.of(ctx).popAndPushNamed("/home");
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -23,16 +24,12 @@ class LoginView extends StatelessWidget {
     } catch (e) {
       print(e);
     }
-
-
   }
 
   @override
   Widget build(BuildContext context) {
-    FirebaseAuth auth = FirebaseAuth.instance;
-   
-   var emailController = TextEditingController();
-   var paswController = TextEditingController();
+    var emailController = TextEditingController();
+    var paswController = TextEditingController();
 
     return Scaffold(
       body: Padding(
@@ -86,7 +83,7 @@ class LoginView extends StatelessWidget {
                         ),
                         TextFormField(
                           controller: paswController,
-                           obscureText: true,
+                          obscureText: true,
                           decoration: InputDecoration(
                             labelText: 'Password',
                             hintText: 'Enter your password here...',
@@ -113,10 +110,11 @@ class LoginView extends StatelessWidget {
                           width: MediaQuery.of(context).size.width / 2,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                               primary: Theme.of(context).primaryColor,
+                              primary: Theme.of(context).primaryColor,
                             ),
                             onPressed: () {
-                              logIn(emailController.text.trim(), paswController.text.trim(),context);
+                              logIn(emailController.text.trim(),
+                                  paswController.text.trim(), context);
                             },
                             child: Text('Login'),
                           ),

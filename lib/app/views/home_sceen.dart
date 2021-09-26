@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shellhack_project/app/views/portafolio/portafolio.dart';
 import 'package:shellhack_project/app/views/search/search_screen.dart';
 
 class HomeScreen extends StatefulWidget {

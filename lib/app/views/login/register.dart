@@ -24,7 +24,6 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseAuth auth = FirebaseAuth.instance;
 
     var emailController = TextEditingController();
     var paswController = TextEditingController();

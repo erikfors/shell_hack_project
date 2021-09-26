@@ -5,10 +5,10 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:shellhack_project/app/providers/coinroutes.dart';
+//import 'package:shellhack_project/app/providers/coinroutes.dart';
 
 void main() async {
-  CoinRoutesProvider provider = CoinRoutesProvider();
+  //CoinRoutesProvider provider = CoinRoutesProvider();
   print('hellop');
   //final chart = await provider.coinChart(pair: 'BTC-USD');
 }

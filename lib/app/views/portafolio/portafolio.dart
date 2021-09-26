@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shellhack_project/app/models/coin_info.dart';
 import 'package:shellhack_project/app/models/cost_calculator.dart';
-import 'package:shellhack_project/app/models/currency_pairs.dart';
-import 'package:shellhack_project/app/providers/coinroutes.dart';
 import 'package:shellhack_project/app/providers/crypto_icons.dart';
 import 'package:shellhack_project/app/views/coin%20detail/coin_detail.dart';
 import 'package:shellhack_project/app/views/portafolio/controller/portafolio.controller.dart';
 
+// ignore: must_be_immutable
 class PortafolioView extends StatelessWidget {
   final controller = Get.put(PortafolioController());
   List<CoinInfo> coinInfoList = [];

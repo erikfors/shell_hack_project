@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_candlesticks/flutter_candlesticks.dart';
 import 'package:get/get.dart';
 import 'package:shellhack_project/app/models/coin_info.dart';
+import 'package:shellhack_project/app/views/buy%20screen/buy_screen.dart';
+import 'package:shellhack_project/app/views/sell_screen/sell_screem.dart';
 
+// ignore: must_be_immutable
 class CoinDetail extends StatelessWidget {
   CoinInfo coinInfo;
 
@@ -19,6 +22,7 @@ class CoinDetail extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
+        title: CircleAvatar(child: coinInfo.icon),
         actions: [
           IconButton(
               onPressed: () {},
@@ -97,7 +101,9 @@ class CoinDetail extends StatelessWidget {
               ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0,),
+              padding: const EdgeInsets.symmetric(
+                vertical: 8.0,
+              ),
               child: Expanded(
                 child: Container(
                   height: 500,
@@ -114,7 +120,20 @@ class CoinDetail extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      backgroundColor: Color(0xFF1A1F24),
+                      builder: (bCtx) => BuyMenu(coinInfo),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(
+                            42,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(130, 40),
                     primary: Theme.of(context).primaryColor,
@@ -127,7 +146,20 @@ class CoinDetail extends StatelessWidget {
                   ),
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    showModalBottomSheet(
+                      context: context,
+                      backgroundColor: Color(0xFF1A1F24),
+                      builder: (bCtx) => SellMenu(coinInfo),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          top: Radius.circular(
+                            42,
+                          ),
+                        ),
+                      ),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     fixedSize: Size(130, 40),
                     primary: Theme.of(context).errorColor,
