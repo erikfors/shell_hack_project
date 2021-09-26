@@ -32,7 +32,7 @@ class CoinRoutesProvider {
   }
 
   Future<CostCalculator> getCostCalculator(
-      {required String pair, int quantity = 1}) async {
+      {required String pair, int quantity = 1, required List exchanges}) async {
     Dio dio = new Dio();
     Response response = await dio.post(
       _baseUrl + '/cost_calculator/',
@@ -41,8 +41,8 @@ class CoinRoutesProvider {
       ),
       data: {
         "currency_pair": pair,
-        "exchanges": ["gdax", "gemini", "bitstamp", "kraken","bitfinex","crosstower","binanceus","cex","bittrex","itbit","gdax","gdax","erisx","b2c2","lmax","ftx"],
-        "side": "bids",
+        "exchanges": exchanges,
+        "side": "asks",
         "quantity": quantity,
         "use_fees": true,
         "use_funding_currency": false
@@ -52,7 +52,7 @@ class CoinRoutesProvider {
     return costCalculatorFromJson(jsonEncode(response.data));
   }
 
-  Future<List<Map<String, num>>> coinChart({required String pair}) async {
+  Future<List<Map<String, num>>> coinChart({required String pair, required double volume}) async {
     Dio dio = Dio();
 
     Response response = await dio.get(
@@ -76,11 +76,12 @@ class CoinRoutesProvider {
             "high": double.parse(xsplit[6]),
             "low": double.parse(xsplit[8]),
             "close": double.parse(xsplit[10]),
-            "volumeto": double.parse(xsplit[2])
+            "volumeto": 50000.0
           };
         },
       ),
     );
+    list.removeLast();
     return list;
   }
 

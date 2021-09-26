@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_candlesticks/flutter_candlesticks.dart';
+import 'package:get/get.dart';
 import 'package:shellhack_project/app/models/coin_info.dart';
 
 class CoinDetail extends StatelessWidget {
@@ -95,12 +96,18 @@ class CoinDetail extends StatelessWidget {
                       ),
               ],
             ),
-            Container(
-              height: 500,
-              child: OHLCVGraph(
-                data: coinInfo.history as List<dynamic>,
-                enableGridLines: false,
-                volumeProp: 0.2,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0,),
+              child: Expanded(
+                child: Container(
+                  height: 500,
+                  width: Get.width,
+                  child: OHLCVGraph(
+                    data: coinInfo.history!.reversed.toList(),
+                    enableGridLines: true,
+                    volumeProp: 0.2,
+                  ),
+                ),
               ),
             ),
             Row(

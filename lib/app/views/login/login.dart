@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 
+import 'package:firebase_auth/firebase_auth.dart';
+
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
 
+  void logIn(String emai, String password){
+
+  }
+
   @override
   Widget build(BuildContext context) {
+
+    //FirebaseAuth auth = FirebaseAuth.instance;
+
     return Scaffold(
       body: Container(
         color: Color(0xFF131619),
