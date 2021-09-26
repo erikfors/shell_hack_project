@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_candlesticks/flutter_candlesticks.dart';
+import 'package:get/get.dart';
 import 'package:shellhack_project/app/models/coin_info.dart';
 import 'package:shellhack_project/app/models/cost_calculator.dart';
 import 'package:shellhack_project/app/models/currency_pairs.dart';
@@ -31,12 +32,15 @@ class CoinDetail extends StatelessWidget {
           children: [
             Text(coinInfo.currencyPair!.slug),
             Text(coinInfo.costCalculator!.lastPrice.toString()),
-            Container(
-              height: 500,
-              child: OHLCVGraph(
-                data: coinInfo.history as List<dynamic>,
-                enableGridLines: false,
-                volumeProp: 0.2,
+            Expanded(
+              child: Container(
+                height: 800,
+                width: Get.width,
+                child: OHLCVGraph(
+                  data: coinInfo.history!.reversed.toList(),
+                  enableGridLines: true,
+                  volumeProp: 0.2,
+                ),
               ),
             ),
           ],
