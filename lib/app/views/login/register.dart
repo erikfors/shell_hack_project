@@ -24,7 +24,6 @@ class RegisterView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     var emailController = TextEditingController();
     var paswController = TextEditingController();
 
@@ -42,9 +41,9 @@ class RegisterView extends StatelessWidget {
                 children: [
                   SafeArea(
                     child: Text(
-                      'Logo',
+                      'Coinscape',
                       style: TextStyle(
-                        fontSize: 28,
+                        fontSize: 32,
                         fontWeight: FontWeight.bold,
                       ),
                     ),

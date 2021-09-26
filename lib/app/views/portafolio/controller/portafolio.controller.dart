@@ -4,6 +4,7 @@ import 'package:shellhack_project/app/models/currency_pairs.dart';
 import 'package:shellhack_project/app/providers/coinroutes.dart';
 
 class PortafolioController extends GetxController {
+
   CoinRoutesProvider coinRoutesProvider = new CoinRoutesProvider();
   final pairs = <CurrencyPair>[].obs;
   @override
