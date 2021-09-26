@@ -44,20 +44,28 @@ class PortafolioView extends StatelessWidget {
                           ),
                           child: ListTile(
                             onTap: () async {
-                              var history = await controller.coinRoutesProvider
-                                  .coinChart(
-                                      pair: controller.pairs[index].slug);
+                              Get.showOverlay(
+                                  asyncFunction: () async {
+                                    var history = await controller
+                                        .coinRoutesProvider
+                                        .coinChart(
+                                            pair: controller.pairs[index].slug,
+                                            volume: coinInfo.costCalculator!
+                                                .grossConsideration);
 
-                              coinInfoList[index].history = history;
+                                    coinInfoList[index].history = history;
 
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (ctx) => CoinDetail(
-                                    coinInfoList[index],
-                                  ),
-                                ),
-                              );
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (ctx) => CoinDetail(
+                                          coinInfoList[index],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  loadingWidget: Center(
+                                      child: CircularProgressIndicator()));
                             },
                             leading: CircleAvatar(
                               child: FutureBuilder(
@@ -75,13 +83,9 @@ class PortafolioView extends StatelessWidget {
 
                                   var data = snapshot.data;
 
-                                  if (data == null) {
-                                    return Text("G");
-                                  }
-
                                   coinInfoList[index].icon = data;
 
-                                  return data;
+                                  return data!;
                                 },
                               ),
                             ),
@@ -92,9 +96,12 @@ class PortafolioView extends StatelessWidget {
                             trailing: FutureBuilder(
                               future: controller.getCost(
                                   pair: controller.pairs[index].slug,
+                                  exchanges: controller.pairs[index].exchanges
+                                      .map((e) => e.name)
+                                      .toList(),
                                   quantity: 1),
                               builder: (BuildContext context,
-                                  AsyncSnapshot<CostCalculator> snapshot) {
+                                  AsyncSnapshot<CostCalculator?> snapshot) {
                                 if (snapshot.connectionState ==
                                     ConnectionState.waiting) {
                                   return Text("Loading...");
