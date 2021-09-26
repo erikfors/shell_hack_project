@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({Key? key}) : super(key: key);
@@ -80,7 +79,7 @@ class LoginView extends StatelessWidget {
                         width: MediaQuery.of(context).size.width / 2,
                         child: ElevatedButton(
                           onPressed: () {
-                            Get.offAllNamed('/home');
+                            Navigator.popAndPushNamed(context, '/home');
                           },
                           child: Text('Login'),
                         ),
