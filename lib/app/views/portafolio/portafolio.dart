@@ -75,7 +75,6 @@ class PortafolioView extends StatelessWidget {
 
                             return Image(
                               image: data.image,
-                              key: GlobalKey(debugLabel: index.toString()),
                             );
                           },
                         ),
