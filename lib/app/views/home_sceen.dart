@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_rx/src/rx_types/rx_types.dart';
+import 'package:shellhack_project/app/providers/crypto_icons.dart';
 import 'package:shellhack_project/app/views/search/search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -14,8 +17,11 @@ class _HomeScreenState extends State<HomeScreen> {
   final _tabs = [
     SearchScreen(),
     Center(
-      child: Text(
-        "Alerts",
+      child: ListView(
+        children: [
+          NewWidget(name: 'ETH-USD'),
+          NewWidget(name: 'BTC-USD'),
+        ],
       ),
     ),
     Center(
@@ -78,6 +84,31 @@ class _HomeScreenState extends State<HomeScreen> {
         onPressed: () {
           Navigator.of(context).pushNamed("/search");
         },
+      ),
+    );
+  }
+}
+
+class NewWidget extends StatelessWidget {
+  NewWidget({Key? key, required this.name}) : super(key: key);
+  String name;
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(8),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(8),
+        color: Color(0xFF131619),
+      ),
+      child: ListTile(
+        title: Text(name),
+        onTap: () => Get.snackbar(
+            name, "Notifications now enabled for this coin!",
+            backgroundColor: Colors.white, colorText: Colors.black),
+        leading: Image.network(
+          'https://raw.githubusercontent.com/spothq/cryptocurrency-icons/master/128/color/${name.split('-').first.toLowerCase()}.png',
+          width: 40,
+        ),
       ),
     );
   }
