@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:csv/csv.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:shellhack_project/app/models/cost_calculator.dart';
@@ -15,7 +16,7 @@ class CoinRoutesProvider {
 
   final _channel = WebSocketChannel.connect(
     Uri.parse(
-        'wss://staging.coinroutes.com/api/streaming/cbbo/?token=6c634e1eacecc4801b000249287fbf923d5c8824'),
+        'wss://staging.coinroutes.com/api/streaming/real_price/?token=6c634e1eacecc4801b000249287fbf923d5c8824'),
   );
 
   Future<List<CurrencyPair>> getCurrencyPairs() async {
@@ -31,7 +32,7 @@ class CoinRoutesProvider {
   }
 
   Future<CostCalculator> getCostCalculator(
-      {required String pair, int quantity = 1}) async {
+      {required String pair, int quantity = 1, required List exchanges}) async {
     Dio dio = new Dio();
     Response response = await dio.post(
       _baseUrl + '/cost_calculator/',
@@ -40,8 +41,8 @@ class CoinRoutesProvider {
       ),
       data: {
         "currency_pair": pair,
-        "exchanges": ["gdax", "gemini", "bitstamp"],
-        "side": "bids",
+        "exchanges": exchanges,
+        "side": "asks",
         "quantity": quantity,
         "use_fees": true,
         "use_funding_currency": false
@@ -49,6 +50,38 @@ class CoinRoutesProvider {
     );
 
     return costCalculatorFromJson(jsonEncode(response.data));
+  }
+
+  Future<List<Map<String, num>>> coinChart({required String pair}) async {
+    Dio dio = Dio();
+
+    Response response = await dio.get(
+        'https://sor-qa-eu.coinroutes.io/api/streaming/ohlc/?interval=m&product=$pair&size=0&exchanges=gdax,gemini,kraken,bitstamp&format=csv');
+
+    List chart = response.data.toString().split('\n');
+    chart.removeAt(0);
+
+    List<Map<String, num>> list = [];
+
+    list.addAll(
+      chart.map(
+        (e) {
+          if (e.isEmpty) {
+            return {};
+          }
+          List<String> xsplit = e.split(',');
+
+          return {
+            "open": double.parse(xsplit[4]),
+            "high": double.parse(xsplit[6]),
+            "low": double.parse(xsplit[8]),
+            "close": double.parse(xsplit[10]),
+            "volumeto": double.parse(xsplit[2])
+          };
+        },
+      ),
+    );
+    return list;
   }
 
   Stream getRealPrice({required String pair}) {
