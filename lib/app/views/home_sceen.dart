@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:shellhack_project/app/views/portafolio/portafolio.dart';
+import 'package:shellhack_project/app/views/search/search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,7 +12,7 @@ class _HomeScreenState extends State<HomeScreen> {
   var _index = 0;
 
   final _tabs = [
-    PortafolioView(),
+    SearchScreen(),
     Center(
       child: Text(
         "Alerts",
@@ -68,6 +68,15 @@ class _HomeScreenState extends State<HomeScreen> {
           setState(() {
             _index = indx;
           });
+        },
+      ),
+      floatingActionButton: FloatingActionButton(
+        child: Icon(
+          Icons.search,
+          color: Colors.white,
+        ),
+        onPressed: () {
+          Navigator.of(context).pushNamed("/search");
         },
       ),
     );

@@ -1,11 +1,9 @@
 import 'dart:convert';
 
-import 'package:csv/csv.dart';
+
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:shellhack_project/app/models/cost_calculator.dart';
 import 'package:shellhack_project/app/models/currency_pairs.dart';
-import 'package:shellhack_project/app/models/real_price.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 
 class CoinRoutesProvider {
@@ -52,7 +50,7 @@ class CoinRoutesProvider {
     return costCalculatorFromJson(jsonEncode(response.data));
   }
 
-  Future<List<Map<String, num>>> coinChart({required String pair}) async {
+  Future<List<Map<String, num>>> coinChart({required String pair, required double volume}) async {
     Dio dio = Dio();
 
     Response response = await dio.get(
@@ -76,11 +74,12 @@ class CoinRoutesProvider {
             "high": double.parse(xsplit[6]),
             "low": double.parse(xsplit[8]),
             "close": double.parse(xsplit[10]),
-            "volumeto": double.parse(xsplit[2])
+            "volumeto": 50000.0
           };
         },
       ),
     );
+    list.removeLast();
     return list;
   }
 
