@@ -2,18 +2,15 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({Key? key}) : super(key: key);
+class RegisterView extends StatelessWidget {
+  const RegisterView({Key? key}) : super(key: key);
 
-  void logIn(String emai, String password, BuildContext ctx) async {
+  void registerIn(String emai, String password, BuildContext ctx) async {
     try {
-      await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-              email: "barry.allen@example.com",
-              password: "SuperSecretPassword!");
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: "barry.allen@example.com", password: "SuperSecretPassword!");
 
-              Navigator.of(ctx).popAndPushNamed("/home");
-
+      Navigator.of(ctx).popAndPushNamed("/home");
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         print('The password provided is too weak.');
@@ -23,16 +20,14 @@ class LoginView extends StatelessWidget {
     } catch (e) {
       print(e);
     }
-
-
   }
 
   @override
   Widget build(BuildContext context) {
     FirebaseAuth auth = FirebaseAuth.instance;
-   
-   var emailController = TextEditingController();
-   var paswController = TextEditingController();
+
+    var emailController = TextEditingController();
+    var paswController = TextEditingController();
 
     return Scaffold(
       body: Padding(
@@ -86,7 +81,7 @@ class LoginView extends StatelessWidget {
                         ),
                         TextFormField(
                           controller: paswController,
-                           obscureText: true,
+                          obscureText: true,
                           decoration: InputDecoration(
                             labelText: 'Password',
                             hintText: 'Enter your password here...',
@@ -112,19 +107,20 @@ class LoginView extends StatelessWidget {
                           height: 50,
                           width: MediaQuery.of(context).size.width / 2,
                           child: ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                               primary: Theme.of(context).primaryColor,
-                            ),
                             onPressed: () {
-                              logIn(emailController.text.trim(), paswController.text.trim(),context);
+                              registerIn(emailController.text.trim(),
+                                  paswController.text.trim(), context);
                             },
-                            child: Text('Login'),
+                            style: ElevatedButton.styleFrom(
+                              primary: Theme.of(context).primaryColor,
+                            ),
+                            child: Text('Register'),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  SafeArea(child: Text('Don’t have an account yet?'))
+                  SafeArea(child: Text('Already Have an Account?'))
                 ],
               ),
             ),

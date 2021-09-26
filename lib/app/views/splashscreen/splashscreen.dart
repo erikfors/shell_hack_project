@@ -28,8 +28,17 @@ class SplashScreenView extends StatelessWidget {
                       height: 50,
                       width: MediaQuery.of(context).size.width / 2,
                       child: ElevatedButton(
-                        onPressed: () {},
-                        child: Text('Register'),
+                        style: ElevatedButton.styleFrom(
+                          primary: Theme.of(context).primaryColor,
+                        ),
+                        onPressed: () {
+                          Navigator.popAndPushNamed(context, '/register');
+                        },
+                        child: Text(
+                          'Register',
+                          style: TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                     Padding(padding: const EdgeInsets.all(10)),
@@ -40,7 +49,16 @@ class SplashScreenView extends StatelessWidget {
                         onPressed: () {
                           Navigator.popAndPushNamed(context, '/login');
                         },
-                        child: Text('Login'),
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.white,
+                        ),
+                        child: Text(
+                          'Login',
+                          style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold),
+                        ),
                       ),
                     ),
                   ],
