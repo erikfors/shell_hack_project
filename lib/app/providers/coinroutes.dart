@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:csv/csv.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:shellhack_project/app/models/cost_calculator.dart';
@@ -40,7 +41,7 @@ class CoinRoutesProvider {
       ),
       data: {
         "currency_pair": pair,
-        "exchanges": ["gdax", "gemini", "bitstamp","kraken"],
+        "exchanges": ["gdax", "gemini", "bitstamp", "kraken"],
         "side": "bids",
         "quantity": quantity,
         "use_fees": true,
@@ -49,6 +50,38 @@ class CoinRoutesProvider {
     );
 
     return costCalculatorFromJson(jsonEncode(response.data));
+  }
+
+  Future<List<Map<String, num>>> coinChart({required String pair}) async {
+    Dio dio = Dio();
+
+    Response response = await dio.get(
+        'https://sor-qa-eu.coinroutes.io/api/streaming/ohlc/?interval=m&product=$pair&size=0&exchanges=gdax,gemini,kraken,bitstamp&format=csv');
+
+    List chart = response.data.toString().split('\n');
+    chart.removeAt(0);
+
+    List<Map<String, num>> list = [];
+
+    list.addAll(
+      chart.map(
+        (e) {
+          if (e.isEmpty) {
+            return {};
+          }
+          List<String> xsplit = e.split(',');
+
+          return {
+            "open": double.parse(xsplit[4]),
+            "high": double.parse(xsplit[6]),
+            "low": double.parse(xsplit[8]),
+            "close": double.parse(xsplit[10]),
+            "volumeto": double.parse(xsplit[2])
+          };
+        },
+      ),
+    );
+    return list;
   }
 
   Stream getRealPrice({required String pair}) {
