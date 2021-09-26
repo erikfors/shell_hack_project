@@ -2,17 +2,13 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 
-class LoginView extends StatelessWidget {
-  const LoginView({Key? key}) : super(key: key);
+class RegisterView extends StatelessWidget {
+  const RegisterView({Key? key}) : super(key: key);
 
-  void logIn(String emai, String password, BuildContext ctx) async {
+  void registerIn(String emai, String password, BuildContext ctx) async {
     try {
-      var userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-              email: "barry.allen@example.com",
-              password: "SuperSecretPassword!");
-
-      //create user var firestore = FirebaseFirestore.instance;
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: "barry.allen@example.com", password: "SuperSecretPassword!");
 
       Navigator.of(ctx).popAndPushNamed("/home");
     } on FirebaseAuthException catch (e) {
@@ -28,6 +24,7 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     var emailController = TextEditingController();
     var paswController = TextEditingController();
 
@@ -109,20 +106,20 @@ class LoginView extends StatelessWidget {
                           height: 50,
                           width: MediaQuery.of(context).size.width / 2,
                           child: ElevatedButton(
+                            onPressed: () {
+                              registerIn(emailController.text.trim(),
+                                  paswController.text.trim(), context);
+                            },
                             style: ElevatedButton.styleFrom(
                               primary: Theme.of(context).primaryColor,
                             ),
-                            onPressed: () {
-                              logIn(emailController.text.trim(),
-                                  paswController.text.trim(), context);
-                            },
-                            child: Text('Login'),
+                            child: Text('Register'),
                           ),
                         ),
                       ],
                     ),
                   ),
-                  SafeArea(child: Text('Don’t have an account yet?'))
+                  SafeArea(child: Text('Already Have an Account?'))
                 ],
               ),
             ),

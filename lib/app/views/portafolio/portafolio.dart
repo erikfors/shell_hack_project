@@ -2,33 +2,32 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shellhack_project/app/models/coin_info.dart';
 import 'package:shellhack_project/app/models/cost_calculator.dart';
-import 'package:shellhack_project/app/models/currency_pairs.dart';
-import 'package:shellhack_project/app/providers/coinroutes.dart';
 import 'package:shellhack_project/app/providers/crypto_icons.dart';
 import 'package:shellhack_project/app/views/coin%20detail/coin_detail.dart';
 import 'package:shellhack_project/app/views/portafolio/controller/portafolio.controller.dart';
 
+// ignore: must_be_immutable
 class PortafolioView extends StatelessWidget {
   final controller = Get.put(PortafolioController());
   List<CoinInfo> coinInfoList = [];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return Scaffold(
+      appBar: AppBar(title: Text("Search a Coin"),),
+        body: Container(
       width: double.infinity,
       color: Color(0xFF1A1F24),
       padding: EdgeInsets.all(16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            "My Portafolio",
-            textAlign: TextAlign.start,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
+        
           Obx(
             () => controller.pairs.isEmpty
-                ? CircularProgressIndicator()
+                ? Center(
+                    child: CircularProgressIndicator(),
+                  )
                 : Expanded(
                     child: ListView.builder(
                       itemCount: 50,
@@ -126,6 +125,6 @@ class PortafolioView extends StatelessWidget {
           ),
         ],
       ),
-    );
+    ));
   }
 }
