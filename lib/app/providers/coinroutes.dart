@@ -41,7 +41,7 @@ class CoinRoutesProvider {
       ),
       data: {
         "currency_pair": pair,
-        "exchanges": ["gdax", "gemini", "bitstamp", "kraken"],
+        "exchanges": ["gdax", "gemini", "bitstamp", "kraken","bitfinex","crosstower","binanceus","cex","bittrex","itbit","gdax","gdax","erisx","b2c2","lmax","ftx"],
         "side": "bids",
         "quantity": quantity,
         "use_fees": true,

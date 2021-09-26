@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shellhack_project/app/views/coin%20detail/coin_detail.dart';
 import 'package:shellhack_project/app/views/home_sceen.dart';
 import 'app/views/login/login.dart';
 import 'app/views/splashscreen/splashscreen.dart';
